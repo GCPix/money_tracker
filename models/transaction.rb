@@ -85,4 +85,21 @@ class Transaction
     balance = (amount_array.sum)/100
 
   end
+  def self.income_last_30_days
+    sql = "SELECT * FROM transactions t WHERE t.type = 'pay in' AND t.t_date BETWEEN (current_date-30) AND current_date"
+    transaction_array = SqlRunner.run(sql)
+    object_array = transaction_array.map{|object| Transaction.new(object)}
+    amount_array = object_array.map{|transaction| transaction.amount}
+    balance = (amount_array.sum)/100
+
+  end
+  def self.outgoings_last_30_days
+
+    sql = "SELECT * FROM transactions t WHERE t.type = 'purchase' AND t.t_date BETWEEN (current_date-30) AND current_date"
+    transaction_array = SqlRunner.run(sql)
+    object_array = transaction_array.map{|object| Transaction.new(object)}
+    amount_array = object_array.map{|transaction| transaction.amount}
+    balance = ((amount_array.sum)/100)
+    balance = balance*(-1)
+  end
 end

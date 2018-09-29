@@ -1,4 +1,5 @@
-<div> <p>Income:</p>
-  <p>Outgoings:</p>
-  <p>Balance:</p>
+<div> <p>Income for the last 30 days: £ <%=@income%></p>
+  <p>Outgoings for the last 30 days: £<%=@outgoing%></p>
+  <p>Overall Balance: £<%=@balance%></p>
+  <p><%= "You are close to your limit" if @balance <= 100%></p>
 </div>

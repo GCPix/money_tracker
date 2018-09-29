@@ -42,6 +42,8 @@ transaction3 = Transaction.new("description" => "lunch", "amount" => 495, "t_dat
 transaction3.save()
 transaction4 = Transaction.new("description" => "salary", "amount" => 100000, "t_date" => "2018-08-04" , "type" => "pay in", "merchant_id" => merchant5.id, "tag_id" => tag7.id)
 transaction4.save()
+transaction5 = Transaction.new("description" => "salary", "amount" => 100000, "t_date" => "2018-09-20" , "type" => "pay in", "merchant_id" => merchant5.id, "tag_id" => tag7.id)
+transaction5.save()
 
 
 
