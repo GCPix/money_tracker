@@ -18,6 +18,19 @@ class Merchant
     @id = result.first["id"].to_i
   end
 
+  def self.find_all
+    sql = "SELECT * FROM merchants"
+    result = SqlRunner.run(sql)
+    merchant_list = result.map{|merchant| Merchant.new(merchant)}
+
+  end
+  def self.find(id)
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [id]
+
+    list = SqlRunner.run(sql,values)
+    result = Merchant.new(list.first)
+  end
   def edit
     sql = "UPDATE merchants SET name = $1 WHERE id = $2"
     values = [@name, @id]
@@ -34,5 +47,19 @@ class Merchant
   def self.delete_all
     sql = "DELETE FROM merchants"
     SqlRunner.run(sql)
+  end
+
+  def self.usage_frequency
+    sql = "SELECT t.merchant_id, COUNT(*) AS count FROM transactions t GROUP BY merchant_id ORDER BY count DESC"
+    result = SqlRunner.run(sql)
+    count_list = result.map{|item| item}
+    return count_list
+
+  end
+  def self.list_merchants
+    sql = "SELECT * from merchants WHERE id = $1"
+    values = [@merchant_id]
+    SqlRunner.run(sql,values)
+
   end
 end

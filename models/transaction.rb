@@ -78,4 +78,11 @@ class Transaction
   #   result = SqlRunner.run(sql)
   #   transaction_list = result.map{|transaction| Transaction.new(transaction)}
   # end
+
+  def self.current_balance
+    transaction_array = Transaction.find_all
+    amount_array = transaction_array.map{|transaction| transaction.amount}
+    balance = (amount_array.sum)/100
+
+  end
 end
