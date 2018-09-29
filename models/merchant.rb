@@ -56,10 +56,11 @@ class Merchant
     return count_list
 
   end
-  def self.list_merchants
-    sql = "SELECT * from merchants WHERE id = $1"
-    values = [@merchant_id]
-    SqlRunner.run(sql,values)
 
+  def self.all_transactions(id)
+    sql = "SELECT * FROM transactions WHERE merchant_id = $1"
+    values = [id]
+    result = SqlRunner.run(sql,values)
+    return list = result.map{|item| Transaction.new(item)}
   end
 end
