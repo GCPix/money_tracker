@@ -20,6 +20,15 @@ end
 
 get '/merchants/:id/transactions' do
   @transaction_list = Merchant.all_transactions(params[:id])
-
   erb(:"merchants/merchant_transactions")
+end
+
+
+
+
+post '/merchants/delete/:id' do
+  merchant = Merchant.find(params[:id])
+
+  merchant.delete_one
+  redirect "/"
 end

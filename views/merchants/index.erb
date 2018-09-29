@@ -8,10 +8,10 @@
 
 <%@merchant_list.each do |merchant_f|%>
   <tr>
-<td><%for merchant in @merchants %><%=merchant.name if merchant.id == merchant_f["merchant_id"].to_i%><%end%></td>
+<td><%for merchant in @merchants %><%=merchant.name if merchant.id == merchant_f["id"].to_i%><%end%></td>
 <td><%=merchant_f["count"]%></td>
 
-<td><a href = "/merchants/<%= merchant_f["merchant_id"].to_i %>"> Show Detail</a></td>
+<td><a href = "/merchants/<%= merchant_f["id"].to_i %>"> Show Detail</a></td>
 
 <%end%>
 </tr>

@@ -1,6 +1,13 @@
 <h1><%=@merchant.name%></h1>
 
-<p> <a href = "<%=@merchant.id%>/transactions">Show all transactions for this merchant </a></p>
 
 
-<p>Delete this merchant</p>
+<form method="get" action = "<%=@merchant.id%>/transactions">
+
+    <input class = "button" type="submit" value="Show Transactions for Merchant"/>
+</form>
+
+<form method="post" action = "/merchants/delete/<%=@merchant.id%>">
+
+    <input class = "button" type="submit" value="Delete Merchant"/>
+</form>

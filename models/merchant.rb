@@ -50,12 +50,13 @@ class Merchant
   end
 
   def self.usage_frequency
-    sql = "SELECT t.merchant_id, COUNT(*) AS count FROM transactions t GROUP BY merchant_id ORDER BY count DESC"
+    sql = "SELECT m.id, COUNT(t.merchant_id) AS count FROM merchants m LEFT JOIN transactions t ON m.id = t.merchant_id GROUP BY m.id ORDER BY count DESC"
     result = SqlRunner.run(sql)
     count_list = result.map{|item| item}
     return count_list
 
   end
+
 
   def self.all_transactions(id)
     sql = "SELECT * FROM transactions WHERE merchant_id = $1"
