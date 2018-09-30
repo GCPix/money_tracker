@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Amount</th>
+  </tr>
+
+<%for trans in @transaction_list%>
+  <tr>
+    <td><%=trans.type%>
+    <td><%=trans.description%></td>
+    <td><%=trans.t_date%></td>
+    <td>£
+    <%if trans.type=="pay in"%>
+      <%=(trans.amount/100)%>
+    <%end%>
+    <%if trans.type=="purchase"%>
+      <%=(trans.amount/100)*-1%>
+    <%end%>
+    </td>
+
+<%end%>
+</tr>
+<
+</table>

@@ -10,6 +10,20 @@ class Tag
   @name = options["name"]
   end
 
+  def self.find_all
+    sql = "SELECT * FROM tags"
+    result = SqlRunner.run(sql)
+    tag_list = result.map{|tag| Tag.new(tag)}
+
+  end
+  def self.find(id)
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [id]
+
+    list = SqlRunner.run(sql,values)
+    result = Tag.new(list.first)
+  end
+
   def self.delete_all
     sql = "DELETE FROM tags"
     SqlRunner.run(sql)
@@ -24,7 +38,7 @@ class Tag
   end
 
   def edit
-    sql = "UPDATE tag SET name = $1 WHERE id = $2"
+    sql = "UPDATE tags SET name = $1 WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run(sql,values)
 
@@ -34,5 +48,20 @@ class Tag
     sql = "DELETE FROM tags WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.usage_frequency
+    sql = "SELECT tags.id, COUNT(transactions.tag_id) AS count FROM tags LEFT JOIN transactions ON tags.id = transactions.tag_id GROUP BY tags.id ORDER BY count DESC"
+    result = SqlRunner.run(sql)
+    count_list = result.map{|item| item}
+    return count_list
+
+  end
+
+  def self.all_transactions(id)
+    sql = "SELECT * FROM transactions WHERE tag_id = $1"
+    values = [id]
+    result = SqlRunner.run(sql,values)
+    return list = result.map{|item| Transaction.new(item)}
   end
 end

@@ -1,0 +1,18 @@
+<h1><%=@tag.name%></h1>
+
+
+
+<form method="get" action = "<%=@tag.id%>/transactions">
+
+    <input class = "button" type="submit" value="Show Transactions for Tag"/>
+</form>
+
+<form method="get" action = "/tags/<%=@tag.id%>/edit">
+
+    <input class = "button" type="submit" value="Edit Tag Details"/>
+</form>
+
+<form method="post" action = "/tags/delete/<%=@tag.id%>">
+
+    <input class = "button" type="submit" value="Delete Tag"/>
+</form>

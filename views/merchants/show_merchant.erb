@@ -7,6 +7,11 @@
     <input class = "button" type="submit" value="Show Transactions for Merchant"/>
 </form>
 
+<form method="get" action = "/merchants/<%=@merchant.id%>/edit">
+
+    <input class = "button" type="submit" value="Edit Merchant Details"/>
+</form>
+
 <form method="post" action = "/merchants/delete/<%=@merchant.id%>">
 
     <input class = "button" type="submit" value="Delete Merchant"/>

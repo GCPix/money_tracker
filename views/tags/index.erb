@@ -1,0 +1,24 @@
+<h1>a list of all tag types </h1>
+
+<form method="get" action = "/tags/new">
+
+    <input class = "button" type="submit" value="Add a new Tag Type"/>
+</form>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>No of times used</th>
+  </tr>
+
+<%@tag_list.each do |tag_f|%>
+  <tr>
+<td><%for tag in @tags %><%=tag.name if tag.id == tag_f["id"].to_i%><%end%></td>
+<td><%=tag_f["count"]%></td>
+
+<td><a href = "/tags/<%= tag_f["id"].to_i %>"> Show Detail</a></td>
+
+<%end%>
+</tr>
+<
+</table>
