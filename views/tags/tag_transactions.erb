@@ -12,10 +12,10 @@
     <td><%=trans.t_date%></td>
     <td>£
     <%if trans.type=="pay in"%>
-      <%=(trans.amount/100)%>
+      <%=(trans.amount)/100%>
     <%end%>
     <%if trans.type=="purchase"%>
-      <%=(trans.amount/100)*-1%>
+      <%=((trans.amount)/100)*-1%>
     <%end%>
     </td>
 

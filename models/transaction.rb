@@ -9,8 +9,8 @@ class Transaction
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @description = options["description"]
-    @amount = options["amount"].to_i
-    @t_date = options["t_date"]
+    @amount = (options["amount"].to_i)
+    @t_date = Date.parse(options["t_date"], "%y/%m/%d")
     @type = options["type"]
     @merchant_id = options["merchant_id"].to_i
     @tag_id = options["tag_id"].to_i
@@ -24,7 +24,9 @@ class Transaction
 
   def save
     if @type == "purchase"
-      @amount = @amount*-1
+      @amount = @amount*-100
+    else
+      @amount=@amount*100
     end
     sql = "INSERT INTO transactions(description, amount, t_date, type, merchant_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id"
     values = [@description, @amount, @t_date, @type, @merchant_id, @tag_id]
@@ -82,7 +84,7 @@ class Transaction
   def self.current_balance
     transaction_array = Transaction.find_all
     amount_array = transaction_array.map{|transaction| transaction.amount}
-    balance = (amount_array.sum)/100
+    balance = (amount_array.sum)
 
   end
   def self.income_last_30_days
@@ -90,7 +92,7 @@ class Transaction
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}
-    balance = (amount_array.sum)/100
+    balance = (amount_array.sum)
 
   end
   def self.outgoings_last_30_days
@@ -99,7 +101,7 @@ class Transaction
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}
-    balance = ((amount_array.sum)/100)
+    balance = ((amount_array.sum))
     balance = balance*(-1)
   end
 end
