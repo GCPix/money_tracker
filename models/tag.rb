@@ -59,7 +59,7 @@ class Tag
   end
 
   def self.all_transactions(id)
-    sql = "SELECT * FROM transactions WHERE tag_id = $1"
+    sql = "SELECT * FROM transactions WHERE tag_id = $1 ORDER BY t_date DESC"
     values = [id]
     result = SqlRunner.run(sql,values)
     return list = result.map{|item| Transaction.new(item)}

@@ -1,3 +1,11 @@
+
+
+<div id='flash' class='notice'>
+ <a class="close" data-dismiss="alert">&#215;</a>
+ <%= flash[:warning] %>
+</div>
+
+
 <div> <p>Income for the last 30 days: £ <%=@income/100%></p>
   <p>Outgoings for the last 30 days: £<%=@outgoing/100%></p>
   <p>Overall Balance: £<%=@balance/100%></p>

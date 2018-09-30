@@ -14,7 +14,7 @@
   <tr>
 <td><%=transaction.type%></td>
 <td><%=transaction.t_date%></td>
-<td><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></td>
+<td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
 <td><%=transaction.description%></td>
   <td>£
     <%if transaction.type=="pay in"%>
@@ -24,7 +24,7 @@
       <%=((transaction.amount)/100*-1)%>
     <%end%>
   </td>
-  <td><%for tag in @tag_list %><%=tag.name if tag.id == transaction.tag_id.to_i%><%end%></td>
+  <td><a href = "/tags/<%for tag in @tag_list %><%=tag.id if tag.id ==  transaction.tag_id.to_i%><%end%>/transactions"><%for tag in @tag_list %><%=tag.name if tag.id == transaction.tag_id.to_i%><%end%></a></td>
 
   <td><a href = "/transactions/<%=transaction.id%>/edit"> Edit Transaction</a></td>
 <%end%>

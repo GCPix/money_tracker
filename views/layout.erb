@@ -21,14 +21,21 @@
         <a> Reports</a>
       </li>
       <li>
-        <a href = "/merchants"> Merchant</a>
+        <a href = "/merchants"> Merchant Info</a>
       </li>
       <li>
-        <a href = "/tags"> Tag</a>
+        <a href = "/tags"> Tag Info</a>
       </li>
     </ul>
   </nav>
+
   <section>
+    <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <% end %>
   <%= yield %>
   </section>
   </main>

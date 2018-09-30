@@ -60,20 +60,20 @@ class Transaction
     result = SqlRunner.run(sql, values)
     transaction_list = Transaction.new(result.first)
   end
-
-  def self.find_transaction_by_merchant(m_id)
-    sql = "SELECT * FROM transactions WHERE merchant_id = $1 ORDER BY t_date DESC"
-    values = [m_id]
-    result = SqlRunner.run(sql, values)
-    transaction_list = result.map{|transaction| Transaction.new(transaction)}
-  end
-
-  def self.find_transaction_by_tag(t_id)
-    sql = "SELECT * FROM transactions WHERE tag_id = $1 ORDER BY t_date DESC"
-    values = [t_id]
-    result = SqlRunner.run(sql, values)
-    transaction_list = result.map{|transaction| Transaction.new(transaction)}
-  end
+  # these aren't required here as already written in merchant and tag but I can't then use a back button
+  # def self.find_transaction_by_merchant(m_id)
+  #   sql = "SELECT * FROM transactions WHERE merchant_id = $1 ORDER BY t_date DESC"
+  #   values = [m_id]
+  #   result = SqlRunner.run(sql, values)
+  #   transaction_list = result.map{|transaction| Transaction.new(transaction)}
+  # end
+  #
+  # def self.find_transaction_by_tag(t_id)
+  #   sql = "SELECT * FROM transactions WHERE tag_id = $1 ORDER BY t_date DESC"
+  #   values = [t_id]
+  #   result = SqlRunner.run(sql, values)
+  #   transaction_list = result.map{|transaction| Transaction.new(transaction)}
+  # end
 
   # def self.find_transaction_by_date()
   #   sql = "SELECT * FROM transactions ORDER BY t_date DESC"
