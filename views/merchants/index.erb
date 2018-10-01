@@ -23,7 +23,7 @@
 
 <td><form method="post" action = "/merchants/delete/<%=merchant_f["id"].to_i%>">
 
-    <button type="submit">
+    <button type="submit" <%if merchant_f["count"].to_i>0%><%="disabled"%><%end%>>
       <img src = "/images/icons8-waste-26.png" height="15" width="15">
     </button>
 </form>
