@@ -1,58 +1,59 @@
-<div>
-<h1> all transactions </h1>
+<div class = "screen_placement" style = "max-width: 75%;">
+  <h1> all transactions </h1>
 
-<table>
-  <div>
-    <tr>
-      <th>Type</th>
-      <th>Date</th>
-      <th>Merchant</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Tag Type</th>
-      <th></th>
-      <th></th>
+  <table>
 
-    </tr>
-  </div>
-  <div>
-    <%@transaction_list.each do |transaction|%>
       <tr>
-    <td><%=transaction.type%></td>
-    <td><%=transaction.t_date%></td>
-    <td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
-    <td><%=transaction.description%></td>
-      <td>£
-        <%if transaction.type=="pay in"%>
-          <%=Float(transaction.amount)/100%>
-        <%end%>
-        <%if transaction.type=="purchase"%>
-          <%=(Float(transaction.amount)/100*-1)%>
-        <%end%>
-      </td>
-      <td><a href = "/tags/<%for tag in @tag_list %><%=tag.id if tag.id ==  transaction.tag_id.to_i%><%end%>/transactions"><%for tag in @tag_list %><%=tag.name if tag.id == transaction.tag_id.to_i%><%end%></a></td>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Merchant</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Tag Type</th>
+        <th></th>
+        <th></th>
 
-      <td><a href = "/transactions/<%=transaction.id%>/edit"> <img src = "/images/icons8-edit-50.png" height="20" width="20"></a></td>
+      </tr>
 
-      <td><form method="post" action = "/transactions/delete/<%=transaction.id%>">
 
-          <button type="submit">
-            <img src = "/images/icons8-waste-26.png" height="15" width="15">
-          </button>
-      </form></td>
-    <%end%>
+      <%@transaction_list.each do |transaction|%>
+        <tr>
+      <td><%=transaction.type%></td>
+      <td><%=transaction.t_date%></td>
+      <td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
+      <td><%=transaction.description%></td>
+        <td>£
+          <%if transaction.type=="pay in"%>
+            <%=Float(transaction.amount)/100%>
+          <%end%>
+          <%if transaction.type=="purchase"%>
+            <%=(Float(transaction.amount)/100*-1)%>
+          <%end%>
+        </td>
+        <td><a href = "/tags/<%for tag in @tag_list %><%=tag.id if tag.id ==  transaction.tag_id.to_i%><%end%>/transactions"><%for tag in @tag_list %><%=tag.name if tag.id == transaction.tag_id.to_i%><%end%></a></td>
 
-    </tr>
-  </div>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td>Total Spent:</td>
-  <td>£<%=@outgoing/100%></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+        <td><a href = "/transactions/<%=transaction.id%>/edit"> <img src = "/images/icons8-edit-50.png" height="20" width="20"></a></td>
+
+        <td><form method="post" action = "/transactions/delete/<%=transaction.id%>">
+
+            <button type="submit">
+              <img src = "/images/icons8-waste-26.png" height="15" width="15">
+            </button>
+        </form></td>
+      <%end%>
+
+      </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total Spent:</td>
+    <td>£<%=@outgoing/100%></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </table>
+
 </div>

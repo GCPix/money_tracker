@@ -1,15 +1,9 @@
 
-
-<div id='flash' class='notice'>
- <a class="close" data-dismiss="alert">&#215;</a>
- <%= flash[:warning] %>
-</div>
 <!--grid laid out for three rows, on this screen 1 cell first row, 3 second row 1 bottom row -->
-<div class = "grid-row">
-  <div class = "cell">
+
+  <div class = "screen_placement" style = "background-color: white;">
     <p>Income for the last 30 days: £ <%=@income/100%></p>
       <p>Outgoings for the last 30 days: £<%=@outgoing/100%></p>
       <p>Overall Balance: £<%=@balance/100%></p>
       <p><%= "You are close to your limit" if @balance/100 <= 100%></p>
   </div>
-</div>

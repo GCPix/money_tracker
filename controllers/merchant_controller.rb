@@ -26,6 +26,7 @@ get '/merchants/:id/edit' do
   erb(:"merchants/edit")
 end
 get '/merchants/:id/transactions' do
+  @merchant_list = Merchant.find_all
   @transaction_list = Merchant.all_transactions(params[:id])
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   erb(:"merchants/merchant_transactions")

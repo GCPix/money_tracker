@@ -6,6 +6,8 @@
   <link rel="stylesheet" type="text/css" href="/css/navbar.css">
   <link rel="stylesheet" type="text/css" href="/css/table.css">
 
+  <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+
 </head>
 <body class = "grid">
 <main>
@@ -29,13 +31,8 @@
     </ul>
   </nav>
 
-  <section>
-    <% flash.keys.each do |type| %>
-  <div data-alert class="flash <%= type %> alert-box radius">
-    <%= flash[type] %>
-    <a href="#" class="close">&times;</a>
-  </div>
-  <% end %>
+  <section class = "screen_placement">
+
   <%= yield %>
   </section>
   </main>
