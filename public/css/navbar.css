@@ -1,0 +1,34 @@
+.navbar {
+  background-color: #AA78A6;
+  display: flex;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.navbar ul{
+  padding:0;
+  margin:0;
+  list-style-type: none;
+}
+
+.navbar li{
+  text-transform: uppercase;
+  font-size: 15px;
+  display:inline-flex;
+  font-weight:bold;
+}
+
+.navbar a{
+  padding: 20px 17px;
+  display: block;
+  text-decoration: none;
+  color:white;
+}
+
+.navbar li:hover{
+  background-color: #B8BAC8;
+}

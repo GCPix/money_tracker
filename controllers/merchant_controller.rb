@@ -9,6 +9,7 @@ also_reload('..models/*')
 
 get '/merchants' do
   @merchants = Merchant.find_all
+  @transaction = Transaction.find_all
   @merchant_list = Merchant.usage_frequency
   erb(:"merchants/index")
 end
@@ -26,6 +27,7 @@ get '/merchants/:id/edit' do
 end
 get '/merchants/:id/transactions' do
   @transaction_list = Merchant.all_transactions(params[:id])
+  @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   erb(:"merchants/merchant_transactions")
 end
 

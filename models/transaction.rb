@@ -9,7 +9,7 @@ class Transaction
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @description = options["description"]
-    @amount = (options["amount"].to_i)
+    @amount = options["amount"].to_i
     @t_date = Date.parse(options["t_date"], "%y/%m/%d")
     @type = options["type"]
     @merchant_id = options["merchant_id"].to_i
@@ -98,6 +98,15 @@ class Transaction
   def self.outgoings_last_30_days
 
     sql = "SELECT * FROM transactions t WHERE t.type = 'purchase' AND t.t_date BETWEEN (current_date-30) AND current_date"
+    transaction_array = SqlRunner.run(sql)
+    object_array = transaction_array.map{|object| Transaction.new(object)}
+    amount_array = object_array.map{|transaction| transaction.amount}
+    balance = ((amount_array.sum))
+    balance = balance*(-1)
+  end
+  def self.outgoings_total
+
+    sql = "SELECT * FROM transactions t WHERE t.type = 'purchase'"
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}

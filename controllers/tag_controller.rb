@@ -25,7 +25,9 @@ get '/tags/:id/edit' do
   erb(:"tags/edit")
 end
 get '/tags/:id/transactions' do
+  @tag_list = Tag.find_all
   @transaction_list = Tag.all_transactions(params[:id])
+  @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   erb(:"tags/tag_transactions")
 end
 

@@ -7,28 +7,28 @@
     <option value = "purchase">Purchase</option>
     <option value = "pay in">Income/option>
   </select>
-
+  <br>
   <label for = "date">Date: </label>
     <input id="date" type = "date" name = "t_date"required/>
-
+    <br>
   <label for = "merchant">Merchant: </label>
     <select id = "merchant" name = "merchant_id">
       <%for merchant in @merchant_list%>
       <option value = <%=merchant.id%>><%=merchant.name%></option> <%end%>
     </select>
-
+    <br>
   <label for = "description">Description: </label>
     <input id="description" type = "text" name = "description" required/>
-
+    <br>
   <label for = "amount">Amount: </label>
     <input id="amount" type = "text" name = "amount" required/>
-
+<br>
   <label for = "tag">Tag: </label>
     <select id = "tag" name = "tag_id">
       <%for tag in @tag_list%>
       <option value = <%=tag.id%>><%=tag.name%></option> <%end%>
     </select>
-
+<br>
 
     <input type = "submit" value = "Add Transaction"/>
 

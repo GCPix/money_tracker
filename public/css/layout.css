@@ -1,0 +1,21 @@
+html{
+background-color: #E2DADB;
+}
+
+.grid{
+  display: flex;
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font: inherit;
+}
+.grid-row{
+
+  flex-direction:row;
+}
+
+.cell {
+  flex: 1;
+  font-size: 18px;
+  justify-content: center;
+}

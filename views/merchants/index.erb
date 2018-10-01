@@ -9,15 +9,25 @@
   <tr>
     <th>Name</th>
     <th>No of times used</th>
+    <th></th>
+    <th></th>
   </tr>
 
 <%@merchant_list.each do |merchant_f|%>
   <tr>
-<td><%for merchant in @merchants %><%=merchant.name if merchant.id == merchant_f["id"].to_i%><%end%></td>
+<td><a href = "/merchants/<%=merchant_f["id"]%>/transactions"><%for merchant in @merchants %><%=merchant.name if merchant.id == merchant_f["id"].to_i%><%end%></a></td>
+
 <td><%=merchant_f["count"]%></td>
 
-<td><a href = "/merchants/<%= merchant_f["id"].to_i %>"> Show Detail</a></td>
+      <td><a href = "/merchants/<%=merchant_f["id"].to_i%>/edit"> <img src = "/images/icons8-edit-50.png" height="20" width="20"></a></td>
 
+<td><form method="post" action = "/merchants/delete/<%=merchant_f["id"].to_i%>">
+
+    <button type="submit">
+      <img src = "/images/icons8-waste-26.png" height="15" width="15">
+    </button>
+</form>
+</td>
 <%end%>
 </tr>
 

@@ -1,0 +1,21 @@
+
+table{
+border-color: black;
+border-style: outset;
+border-collapse: collapse;
+}
+
+tbody{
+  background-color: white;
+}
+th{
+  margin:0;
+  padding:0;
+  background-color: #AA78A6;
+  color: white;
+
+}
+
+tr:hover {
+  background-color: #B8BAC8;
+}
