@@ -9,11 +9,15 @@ tbody{
   background-color: white;
 }
 th{
+  font-family: Overpass;
   margin:0;
   padding:0;
   background-color: #AA78A6;
   color: white;
 
+}
+td{
+  font-family: Overpass;
 }
 
 tr:hover {

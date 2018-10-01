@@ -113,4 +113,6 @@ class Transaction
     balance = ((amount_array.sum))
     balance = balance*(-1)
   end
+
+
 end
