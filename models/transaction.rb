@@ -75,11 +75,12 @@ class Transaction
   #   transaction_list = result.map{|transaction| Transaction.new(transaction)}
   # end
 
-  # def self.find_transaction_by_date()
-  #   sql = "SELECT * FROM transactions ORDER BY t_date DESC"
-  #   result = SqlRunner.run(sql)
-  #   transaction_list = result.map{|transaction| Transaction.new(transaction)}
-  # end
+  def self.find_transaction_by_date(date1, date2)
+    sql = "SELECT * FROM transactions  WHERE t_date BETWEEN '$1' AND '$2' ORDER BY t_date DESC"
+    values = [date1, date2]
+    result = SqlRunner.run(sql, values)
+    transaction_list = result.map{|transaction| Transaction.new(transaction)}
+  end
 
   def self.current_balance
     transaction_array = Transaction.find_all
