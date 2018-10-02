@@ -43,6 +43,8 @@ post '/transactions/date' do
   @balance = Transaction.current_balance
   @transaction_list = Transaction.find_transaction_by_date(params[:first_date], params[:second_date])
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
+  amount_array = @transaction_list.map{|transaction| transaction.amount}
+  @balance = (amount_array.sum)
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
   erb(:"transactions/transaction_date")

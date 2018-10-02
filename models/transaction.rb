@@ -11,7 +11,7 @@ class Transaction
     @description = options["description"]
     @amount = options["amount"].to_i
     @t_date = Date.parse(options["t_date"], "%y/%m/%d")
-    @type = options["type"]
+    @type = options["type"].capitalize
     @merchant_id = options["merchant_id"].to_i
     @tag_id = options["tag_id"].to_i
 

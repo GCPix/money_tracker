@@ -1,9 +1,9 @@
 html{
   margin:0;
   padding:0;
-background-color: #E2DADB;
+  background-color: #E2DADB;
 }
-  .heading_container {
+.heading_container {
       display: flex;
       margin: 0;
       padding: 20px;
@@ -26,10 +26,12 @@ background-color: #E2DADB;
 label{
   min-width: 100px;
   display: inline-block;
+  font-family: Overpass;
+  text-transform: capitalize;
 }
 .screen_placement{
   padding: 15px 30px;
-  justify-content: center;
+  justify-content: space-around;
   margin: 0px auto;
   min-width: 30%;
   max-width: 75%;
@@ -40,13 +42,15 @@ h2{
   font-size: 20px;
   font-family: Overpass;
   font-weight: bold;
+  text-transform: capitalize;
 
 }
 h1{
   color:#AA78A6;
   font-family: Overpass;
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: bolder;
+  font-size: 28px;
+  text-transform: uppercase;
 }
 p{
 font-family: Overpass;
@@ -55,13 +59,13 @@ font-family: Overpass;
 input[type = submit]{
   font-family: Overpass;
   font-size: 15px;
-padding: 5px 10px;
-margin: 10px;
-border-radius: 15px;
-border-color: #AA78A6;
-border-width: thick;
-text-transform: uppercase;
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 15px;
+  border-color: #AA78A6;
+  border-width: thick;
+  text-transform: uppercase;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 
