@@ -9,6 +9,8 @@ background-color: #E2DADB;
       padding: 20px;
       font: inherit;
       justify-content: space-around;
+      align-items: center;
+      background-color: #596475;
   }
 .heading_row{
 
@@ -39,8 +41,10 @@ h2{
 
 }
 h1{
-  color:white;
+  color:#AA78A6;
   font-family: Overpass;
+  font-weight: bold;
+  font-size: 20px;
 }
 p{
 font-family: Overpass;
@@ -58,9 +62,7 @@ text-transform: uppercase;
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-input[type = submit]:hover{
 
-}
 #red{
 
 background-color: red;
