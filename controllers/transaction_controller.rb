@@ -22,7 +22,7 @@ get '/transactions/out' do
   @outgoing = Transaction.outgoings_total
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
-  erb(:"transactions/transaction_pay_out")
+  erb(:"transactions/transaction_Pay_out")
 end
 get '/transactions/in' do
   @balance = Transaction.current_balance
@@ -31,7 +31,7 @@ get '/transactions/in' do
   @incoming = Transaction.income_total
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
-  erb(:"transactions/transaction_pay_in")
+  erb(:"transactions/transaction_Pay_in")
 end
 
 get '/transactions/date_pick' do
@@ -58,6 +58,7 @@ get '/transactions/new' do
 end
 
 get '/transactions/:id/edit' do
+
   @balance = Transaction.current_balance
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
@@ -73,6 +74,12 @@ post '/transactions' do
 end
 
 post '/transactions/:id' do
+  if params[:type]=='Pay in'
+    params[:amount]=(params[:amount].to_i)*100
+  else
+    params[:amount]=(params[:amount].to_i)*-100
+  end
+
   @transaction = Transaction.new(params)
   @transaction.edit
   redirect "/transactions"

@@ -1,10 +1,10 @@
 <div class = "screen_placement" style = "width:50%; background-color:white; border-color: black;">
-<form method = "post" action = "/transactions/edit">
+<form method = "post" action = "/transactions/<%=@transaction.id%>">
 
   <label for = "type">Type: </label>
   <select id = "type" name = "type">
-    <option value = "purchase">Purchase</option>
-    <option value = "pay in">Income/option>
+    <option <%= 'selected' if  'Purchase'== @transaction.type%> value ="Purchase">Purchase</option>
+    <option <%= 'selected' if  'Pay in'== @transaction.type%> value ="Pay in">Income</option>
   </select>
 <br>
   <label for = "date">Date: </label>
@@ -13,28 +13,23 @@
   <label for = "merchant">Merchant: </label>
     <select id = "merchant" name = "merchant_id">
       <%for merchant in @merchant_list%>
-      <option value = <%=merchant.id%> <%= "selected" if merchant.id == @transaction.merchant_id%>> <%=merchant.name%> </option> <%end%>
+      <option value =<%=merchant.id%> <%="selected" if merchant.id == @transaction.merchant_id%>> <%=merchant.name%> </option> <%end%>
     </select>
 <br>
   <label for = "description">Description: </label>
     <input id="description" type = "text" name = "description" value = "<%=@transaction.description%>"required/>
 <br>
-  <label for = "amount">Amount: </label>
-    <input id="amount" type = "text" name = "amount" value = "  <%if @transaction.type=="pay in"%>
-        <%=(@transaction.amount)/100%>
-      <%end%>
-      <%if @transaction.type=="purchase"%>
-        <%=((@transaction.amount)/100)*-1%>
-      <%end%>"required/>
+  <label for ="amount">Amount: </label>
+    <input id="amount" type = "text" name ="amount" value ="<%if @transaction.type=='Pay in'%><%=(@transaction.amount)/100%><%end%><%if @transaction.type=='Purchase'%><%=(@transaction.amount/100)*-1%><%end%>"required/>
 <br>
   <label for = "tag">Tag: </label>
     <select id = "tag" name = "tag_id">
       <%for tag in @tag_list%>
-      <option value = <%=tag.id%> value = <%=tag.id%> <%= "selected" if tag.id == @transaction.tag_id%>><%=tag.name%></option> <%end%>
+      <option value = <%=tag.id%> <%='selected' if tag.id == @transaction.tag_id%>><%=tag.name%></option> <%end%>
     </select>
 
 <br>
-    <input type = "submit" value = "save"/>
+    <input type ="submit" value ="save"/>
 
 </form>
 </div>

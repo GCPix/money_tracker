@@ -23,7 +23,7 @@ class Transaction
   end
 
   def save
-    if @type == "purchase"
+    if @type == "Purchase"
       @amount = @amount*-100
     else
       @amount=@amount*100
@@ -54,13 +54,13 @@ class Transaction
     transaction_list = result.map{|transaction| Transaction.new(transaction)}
   end
   def self.find_outgoing_all
-    sql = "SELECT * FROM transactions WHERE type='purchase' ORDER BY t_date DESC"
+    sql = "SELECT * FROM transactions WHERE type='Purchase' ORDER BY t_date DESC"
     result = SqlRunner.run(sql)
     transaction_list = result.map{|transaction| Transaction.new(transaction)}
   end
 
   def self.find_income_all
-    sql = "SELECT * FROM transactions WHERE type='pay in' ORDER BY t_date DESC"
+    sql = "SELECT * FROM transactions WHERE type='Pay in' ORDER BY t_date DESC"
     result = SqlRunner.run(sql)
     transaction_list = result.map{|transaction| Transaction.new(transaction)}
   end
@@ -100,7 +100,7 @@ class Transaction
 
   end
   def self.income_last_30_days
-    sql = "SELECT * FROM transactions t WHERE t.type = 'pay in' AND t.t_date BETWEEN (current_date-30) AND current_date"
+    sql = "SELECT * FROM transactions t WHERE t.type = 'Pay in' AND t.t_date BETWEEN (current_date-30) AND current_date"
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}
@@ -108,7 +108,7 @@ class Transaction
 
   end
   def self.income_total
-    sql = "SELECT * FROM transactions t WHERE t.type = 'pay in'"
+    sql = "SELECT * FROM transactions t WHERE t.type = 'Pay in'"
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}
@@ -117,7 +117,7 @@ class Transaction
   end
   def self.outgoings_last_30_days
 
-    sql = "SELECT * FROM transactions t WHERE t.type = 'purchase' AND t.t_date BETWEEN (current_date-30) AND current_date"
+    sql = "SELECT * FROM transactions t WHERE t.type = 'Purchase' AND t.t_date BETWEEN (current_date-30) AND current_date"
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}
@@ -126,7 +126,7 @@ class Transaction
   end
   def self.outgoings_total
 
-    sql = "SELECT * FROM transactions t WHERE t.type = 'purchase'"
+    sql = "SELECT * FROM transactions t WHERE t.type = 'Purchase'"
     transaction_array = SqlRunner.run(sql)
     object_array = transaction_array.map{|object| Transaction.new(object)}
     amount_array = object_array.map{|transaction| transaction.amount}

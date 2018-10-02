@@ -26,10 +26,10 @@
       <td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
       <td><%=transaction.description%></td>
         <td>£
-          <%if transaction.type=="pay in"%>
+          <%if transaction.type=="Pay in"%>
             <%=Float(transaction.amount)/100%>
           <%end%>
-          <%if transaction.type=="purchase"%>
+          <%if transaction.type=="Purchase"%>
             <%=(Float(transaction.amount)/100*-1)%>
           <%end%>
         </td>

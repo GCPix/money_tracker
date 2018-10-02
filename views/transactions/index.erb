@@ -22,16 +22,16 @@
 
       <%@transaction_list.each do |transaction|%>
         <tr>
-      <td><a href= <%="/transactions/out" if transaction.type=='purchase'%><%="/transactions/in" if transaction.type=='pay in'%>><%=transaction.type%></a></td>
+      <td><a href= <%="/transactions/out" if transaction.type=='Purchase'%><%="/transactions/in" if transaction.type=='Pay in'%>><%=transaction.type%></a></td>
       <td><%=transaction.t_date%></td>
       <td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
       <td><%=transaction.description%></td>
         <td>£
-          <%if transaction.type=="pay in"%>
-            <%=Float(transaction.amount)/100%>
+          <%if transaction.type=="Pay in"%>
+            <%=transaction.amount/100%>
           <%end%>
-          <%if transaction.type=="purchase"%>
-            <%=(Float(transaction.amount)/100*-1)%>
+          <%if transaction.type=="Purchase"%>
+            <%=(transaction.amount/100)*-1%>
           <%end%>
         </td>
         <td><a href = "/tags/<%for tag in @tag_list %><%=tag.id if tag.id ==  transaction.tag_id.to_i%><%end%>/transactions"><%for tag in @tag_list %><%=tag.name if tag.id == transaction.tag_id.to_i%><%end%></a></td>

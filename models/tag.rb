@@ -67,7 +67,7 @@ class Tag
 
   def self.total_amount_by_tag
 
-    sql = "SELECT tags.name, SUM(t.amount) AS sum FROM tags INNER JOIN transactions t ON tags.id = t.tag_id AND t.type = 'purchase' GROUP BY tags.name ORDER BY sum DESC"
+    sql = "SELECT tags.name, SUM(t.amount) AS sum FROM tags INNER JOIN transactions t ON tags.id = t.tag_id AND t.type = 'Purchase' GROUP BY tags.name ORDER BY sum DESC"
     result = SqlRunner.run(sql)
     sum_list = result.map{|item| item}
     return values = sum_list.map{|hash| hash.values}
