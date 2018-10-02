@@ -12,6 +12,14 @@
 </head>
 <body class = "grid">
 <main>
+<header class="heading_container">
+
+
+
+  <img src="images/money_bag.png" alt="bag of dollar bills" style="width:60px; height:60px; margin-right:15px;">
+  <h1 style = "display:center; font-size: 24px;"> Your Money Tracker </h1>
+  <img src="images/money_bag.png" alt="bag of dollar bills" style="width:60px; height:60px; margin-left:15px;">
+</header>
   <nav  class = "navbar">
     <ul>
       <li>
@@ -32,14 +40,14 @@
     </ul>
   </nav>
 
-  <div <%= "id = 'orange'" if @balance<100 && @balance>0 %>
-    <p><%= "Careful you are close to zero" if @balance<100 && @balance>0%></p>
+  <div id=<%='orange' if @balance>0 && @balance<0%>>
+    <p><%= "Careful you are close to zero" if(@balance<100 && @balance>0)%></p>
   </div>
-    <div <%= "id = 'red'" if @balance<=0%>>
+    <div id=<%='red' if @balance<=0%>>
       <p><%="You ran out of money" if @balance<=0%></p>
 
     </div>
-    <div <%= "id = 'green'" if @balance>=100 %>
+    <div id= <%='green' if @balance>=100 %>>
       <p><%="Your balance is healthy" if @balance>=100%></p>
     </div>
 
