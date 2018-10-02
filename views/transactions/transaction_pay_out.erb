@@ -1,10 +1,11 @@
 <div class = "screen_placement" style = "max-width: 75%;">
-  <h2> Transactions for <%=params[:first_date]%> - <%=params[:second_date]%> </h2>
-  <br>
-  <br>
-  <p><a href = "/transactions/date_pick"> Click here to search a specific date range</a></p>
-  <br><br>
-    <table>
+
+  <h2> all Purchases </h2>
+<br>
+<br>
+<br>
+<br><br>
+  <table>
 
       <tr>
         <th>Type</th>
@@ -51,8 +52,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>Total Spent:</td>
-
+    <td>Total Spend:</td>
+    <td>£<%=@outgoing/100%></td>
     <td></td>
     <td></td>
     <td></td>

@@ -1,6 +1,6 @@
-<div class = "screen_placement" style = "max-width: 75%;">
+<div class = "screen_placement">
 
-  <h1> all transactions </h1>
+  <h2> All Transactions </h2>
 <br>
 <br>
 <p><a href = "/transactions/date_pick"> Click here to search a specific date range</a></p>
@@ -22,7 +22,7 @@
 
       <%@transaction_list.each do |transaction|%>
         <tr>
-      <td><%=transaction.type%></td>
+      <td><a href= <%="/transactions/out" if transaction.type=='purchase'%><%="/transactions/in" if transaction.type=='pay in'%>><%=transaction.type%></a></td>
       <td><%=transaction.t_date%></td>
       <td><a href = "/merchants/<%for merchant in @merchant_list %><%=merchant.id if merchant.id ==  transaction.merchant_id.to_i%><%end%>/transactions"><%for merchant in @merchant_list %><%=merchant.name if merchant.id ==  transaction.merchant_id.to_i%><%end%></a></td>
       <td><%=transaction.description%></td>
@@ -52,8 +52,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>Total Spent:</td>
-    <td>£<%=@outgoing/100%></td>
+    <td>Balance:</td>
+    <td>£<%=@balance/100%></td>
     <td></td>
     <td></td>
     <td></td>

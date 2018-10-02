@@ -29,22 +29,24 @@ label{
 }
 .screen_placement{
   padding: 15px 30px;
-
+  justify-content: center;
   margin: 0px auto;
   min-width: 30%;
   max-width: 75%;
 }
 
 h2{
-  color: white;
+  color: #AA78A6;
+  font-size: 20px;
   font-family: Overpass;
+  font-weight: bold;
 
 }
 h1{
   color:#AA78A6;
   font-family: Overpass;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
 }
 p{
 font-family: Overpass;

@@ -1,5 +1,5 @@
 <h2><%for merchant in @merchant_list%><%=merchant.name if merchant.id==params[:id].to_i%><%end%></h2>
-
+<br>
 <table>
   <tr>
     <th>Description</th>
@@ -11,7 +11,6 @@
 
 <%for trans in @transaction_list%>
   <tr>
-    <td><%=trans.type%>
     <td><%=trans.description%></td>
     <td><%=trans.t_date%></td>
     <td>£
@@ -26,5 +25,5 @@
     <td></td>
 <%end%>
 </tr>
-<
+
 </table>

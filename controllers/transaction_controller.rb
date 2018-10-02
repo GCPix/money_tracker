@@ -11,10 +11,27 @@ get '/transactions' do
   @balance = Transaction.current_balance
   @transaction_list = Transaction.find_all
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
-  @outgoing = Transaction.outgoings_total
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
   erb(:"transactions/index")
+end
+get '/transactions/out' do
+  @balance = Transaction.current_balance
+  @transaction_list = Transaction.find_outgoing_all
+  @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
+  @outgoing = Transaction.outgoings_total
+  @merchant_list = Merchant.find_all
+  @tag_list = Tag.find_all
+  erb(:"transactions/transaction_pay_out")
+end
+get '/transactions/in' do
+  @balance = Transaction.current_balance
+  @transaction_list = Transaction.find_income_all
+  @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
+  @incoming = Transaction.income_total
+  @merchant_list = Merchant.find_all
+  @tag_list = Tag.find_all
+  erb(:"transactions/transaction_pay_in")
 end
 
 get '/transactions/date_pick' do
