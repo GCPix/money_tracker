@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Payment Tracker</title>
+  <link rel="stylesheet" type="text/css" href="/css/reset.css">
   <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <link rel="stylesheet" type="text/css" href="/css/navbar.css">
   <link rel="stylesheet" type="text/css" href="/css/table.css">
@@ -30,6 +31,18 @@
       </li>
     </ul>
   </nav>
+
+  <div <%= "id = 'orange'" if @balance<100 && @balance>0 %>
+    <p><%= "Careful you are close to zero" if @balance<100 && @balance>0%></p>
+  </div>
+    <div <%= "id = 'red'" if @balance<=0%>>
+      <p><%="You ran out of money" if @balance<=0%></p>
+
+    </div>
+    <div <%= "id = 'green'" if @balance>=100 %>
+      <p><%="Your balance is healthy" if @balance>=100%></p>
+    </div>
+
 
   <section class = "screen_placement">
 

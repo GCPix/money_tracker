@@ -8,6 +8,7 @@ require_relative("../models/transaction")
 also_reload('..models/*')
 
 get '/transactions' do
+  @balance = Transaction.current_balance
   @transaction_list = Transaction.find_all
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   @outgoing = Transaction.outgoings_total
@@ -17,10 +18,12 @@ get '/transactions' do
 end
 
 get '/transactions/date_pick' do
+  @balance = Transaction.current_balance
   erb(:"transactions/date_pick")
 end
 
 get '/transactions/date' do
+  @balance = Transaction.current_balance
   @transaction_list = Transaction.find_transaction_by_date(@date1, @date2)
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   @merchant_list = Merchant.find_all
@@ -29,12 +32,14 @@ get '/transactions/date' do
 end
 
 get '/transactions/new' do
+  @balance = Transaction.current_balance
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
   erb(:"transactions/new")
 end
 
 get '/transactions/:id/edit' do
+  @balance = Transaction.current_balance
   @merchant_list = Merchant.find_all
   @tag_list = Tag.find_all
   @transaction = Transaction.find_transaction_by_id(params[:id])
@@ -43,9 +48,6 @@ end
 
 
 post '/transactions' do
-  value = params[:amount]
-  value=value*100
-  params[:amount]=value
   @transaction = Transaction.new(params)
   @transaction.save
   redirect "/transactions"

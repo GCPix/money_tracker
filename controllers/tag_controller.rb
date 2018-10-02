@@ -8,23 +8,27 @@ also_reload('..models/*')
 
 
 get '/tags' do
+  @balance = Transaction.current_balance
   @tags = Tag.find_all
   @tag_list = Tag.usage_frequency
   erb(:"tags/index")
 end
 get '/tags/new' do
-
+@balance = Transaction.current_balance
   erb(:"tags/new")
 end
 get '/tags/:id' do
+  @balance = Transaction.current_balance
   @tag = Tag.find(params[:id])
   erb(:"tags/show_tag")
 end
 get '/tags/:id/edit' do
+  @balance = Transaction.current_balance
   @tag = Tag.find(params[:id])
   erb(:"tags/edit")
 end
 get '/tags/:id/transactions' do
+  @balance = Transaction.current_balance
   @tag_list = Tag.find_all
   @transaction_list = Tag.all_transactions(params[:id])
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}

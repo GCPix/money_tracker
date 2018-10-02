@@ -1,4 +1,6 @@
 html{
+  margin:0;
+  padding:0;
 background-color: #E2DADB;
 }
 
@@ -59,4 +61,28 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 input[type = submit]:hover{
 
+}
+#red{
+
+background-color: red;
+min-height: 15px;
+width:100%;
+color: white;
+padding:10px;
+}
+#green{
+
+background-color: green;
+min-height: 15px;
+width:100%;
+color: white;
+padding:10px;
+}
+#orange{
+
+background-color: orange;
+min-height: 15px;
+width:100%;
+color: white;
+padding:10px;
 }
