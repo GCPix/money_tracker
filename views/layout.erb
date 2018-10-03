@@ -37,6 +37,7 @@
     </ul>
   </nav>
 
+<!-- if this was inside a case statement in the controller I think I could get all 3 to work but I can't see how to do that from layout and I don't want to add this to every page as I don't think that would be best performance wise -->
   <div id=<%='orange' if @balance>0 && @balance<0%>>
     <p><%= "Careful you are close to zero" if(@balance<100 && @balance>0)%></p>
   </div>

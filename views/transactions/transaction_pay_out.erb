@@ -1,5 +1,5 @@
 <div class = "screen_placement" style = "max-width: 75%;">
-
+<!-- Think I should be using css rather than html to space things but at this stage I am scared to break the layout-->
   <h2> all Purchases </h2>
 <br>
 <br>
@@ -19,7 +19,7 @@
 
       </tr>
 
-
+<!--beginning to see ways I could have added my if/for statements to the controller and return a value.  Think if I had done that I would have been able to jsut say print method? Still not sure about this  -->
       <%@transaction_list.each do |transaction|%>
         <tr>
       <td><%=transaction.type%></td>
