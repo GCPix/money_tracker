@@ -40,8 +40,9 @@ get '/transactions/date_pick' do
 end
 
 post '/transactions/date' do
+
   @balance = Transaction.current_balance
-  @transaction_list = Transaction.find_transaction_by_date(Date.parse(params[:first_date], "%y/%m/%d"), Date.parse(params[:second_date], "%y/%m/%d"))
+  @transaction_list = Transaction.find_transaction_by_date(Date.parse(params[:first_date], "%d/%m/%y"), Date.parse(params[:second_date], "%d/%m/%y"))
   @transaction_list.each{|t| t.t_date = t.t_date.strftime("%d/%m/%y")}
   amount_array = @transaction_list.map{|transaction| transaction.amount}
   @balance = (amount_array.sum)
