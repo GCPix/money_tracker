@@ -39,6 +39,12 @@ end
 
 post '/merchants' do
   @balance = Transaction.current_balance
+  @merchant_list = Merchant.find_all
+  for merchant in @merchant_list
+    if params[:name].capitalize==merchant.name
+      redirect "/merchants"
+    end
+  end
   @merchant = Merchant.new(params)
   @merchant.save
   redirect "/merchants"

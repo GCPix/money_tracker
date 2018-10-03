@@ -37,6 +37,12 @@ end
 
 
 post '/tags' do
+  @tag_list = Tag.find_all
+  for tag in @tag_list
+    if params[:name].capitalize==tag.name
+      redirect "/tags"
+    end
+  end
   @tag = Tag.new(params)
   @tag.save
   redirect "/tags"
