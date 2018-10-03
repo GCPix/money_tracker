@@ -20,7 +20,7 @@
     <input id="description" type = "text" name = "description" value = "<%=@transaction.description%>"required/>
 <br>
   <label for ="amount">Amount: </label>
-    <input id="amount" type = "text" name ="amount" value ="<%if @transaction.type=='Pay in'%><%=(@transaction.amount)/100%><%end%><%if @transaction.type=='Purchase'%><%=(@transaction.amount/100)*-1%><%end%>"required/>
+    <input id="amount" type = "number" min = "1" name ="amount" value ="<%if @transaction.type=='Pay in'%><%=(@transaction.amount)/100%><%end%><%if @transaction.type=='Purchase'%><%=(@transaction.amount/100)*-1%><%end%>"required/>
 <br>
   <label for = "tag">Tag: </label>
     <select id = "tag" name = "tag_id">
