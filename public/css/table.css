@@ -1,6 +1,6 @@
 
 table{
-padding: 15px;
+padding: 25px;
 border: 3px #AA78A6 solid;
 border-collapse: collapse;
 display: table;
@@ -12,14 +12,14 @@ tbody{
 th{
   font-family: Overpass;
   margin:0;
-  padding:0;
+  padding:15px, 25px;
   background-color: #AA78A6;
   color: white;
 
 }
 td{
   font-family: Overpass;
-  padding: 5px;
+  padding: 5px, 15px;
 }
 
 tr:hover {

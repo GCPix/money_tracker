@@ -64,6 +64,10 @@ class Merchant
     result = SqlRunner.run(sql,values)
     return list = result.map{|item| Transaction.new(item)}
   end
+# select * from transactions grouped by merchant based on the id in merchants and merchant_id in transactions
+# sum together all transactions for range for each merchant in the merchant table
+# create a list of each merchant with the amount spent for that merchant
+# format list to [[],[],[]]
 
   def self.total_amount_by_merchant
 

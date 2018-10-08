@@ -115,6 +115,8 @@ class Transaction
     balance = (amount_array.sum)
 
   end
+
+
   def self.outgoings_last_30_days
 
     sql = "SELECT * FROM transactions t WHERE t.type = 'Purchase' AND t.t_date BETWEEN (current_date-30) AND current_date"
